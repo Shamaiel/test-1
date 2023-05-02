@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Masai Doctor Records</title>
+  </head>
+  <body>
+    <!-- Use this form for data input  -->
+    <form>
+      <input placeholder="Name" type="text" id="name" />
+      <input placeholder="Doctor ID" type="text" id="doctor_id" />
+      <select id="specialization">
+        <option value="">Select Specialization</option>
+        <option value="Dermatologist">Dermatologist</option>
+        <option value="Dentist">Dentist</option>
+        <option value="Gynecologist">Gynecologist</option>
+      </select>
+      <input placeholder="Experience" type="number" id="experience" />
+      <input placeholder="Email" type="email" id="email" />
+      <input placeholder="Mobile No." type="number" id="mobile" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Use this Select tag for filter part  -->
+    <select id="filter">
+      <option value="">Select Specialization</option>
+      <option value="Dermatologist">Dermatologist</option>
+      <option value="Dentist">Dentist</option>
+      <option value="Gynecologist">Gynecologist</option>
+    </select>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Doctor ID</th>
+          <th>Specialization</th>
+          <th>Experience in Years</th>
+          <th>Email</th>
+          <th>Mobile No</th>
+          <th>Role</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Append Rows here using JS & DOM  -->
+      </tbody>
+    </table>
+  </body>
+  
+  <script>
+  
+
+  // document.querySelector("form").addEventListener("submit", displayRec)
+
+  // function displayRec(){
+  //   event.preventDefault()
+         
+  // var name = document.getElementById("name").value
+  // var docId = document.getElementById("doctor_id").value
+  // var spec = document.getElementById("specialization").value
+  // var exp = document.getElementById("experience").value
+  // var email = document.getElementById("email").value
+  // var mobile = document.getElementById("mobile").value
+  // var filterVal = document.getElementById("filter").value
+    
+  //   var row = document.createElement("tr")
+
+  //   var td1 = document.createElement("td")
+  //   td1.textContent = name
+
+  //   var td2 = document.createElement("td")
+  //   td2.textContent = docId
+
+  //   var td3 = document.createElement("td")
+  //   td3.textContent = spec
+
+  //   var td4 = document.createElement("td")
+  //   td4.textContent = exp
+
+  //   var td5 = document.createElement("td")
+  //   td5.textContent = email
+
+  //   var td6 = document.createElement("td")
+  //   td6.textContent = mobile
+
+  //   var td7 = document.createElement("td")
+  //   if(exp > 5){
+  //     td7.textContent = "Senior"
+  //   }
+  //   else if(exp >= 2 && exp <=5 ){
+  //     td7.textContent = "Junior"
+  //   }
+  //   else{
+  //     td7.textContent = "Trainee"
+  //   }
+
+  //   var td8 = document.createElement("td")
+  //   td8.textContent = "Delete"
+  //   td8.addEventListener("click", ()=> event.target.parentNode.remove() )
+    
+  //   row.append(td1,td2,td3,td4,td5,td6,td7,td8)
+  //   document.querySelector("tbody").append(row)
+  // }
+
+
+
+   /* ABOVE LOGIC OR BELOW(here i used arrow function) */
+
+
+  // document.querySelector("form").addEventListener("submit", ()=>{
+  //   event.preventDefault()
+         
+  //        var name = document.getElementById("name").value
+  //        var docId = document.getElementById("doctor_id").value
+  //        var spec = document.getElementById("specialization").value
+  //        var exp = document.getElementById("experience").value
+  //        var email = document.getElementById("email").value
+  //        var mobile = document.getElementById("mobile").value
+  //        var docSpec = document.getElementById("filter").value
+           
+  //          var row = document.createElement("tr")
+       
+  //          var td1 = document.createElement("td")
+  //          td1.textContent = name
+       
+  //          var td2 = document.createElement("td")
+  //          td2.textContent = docId
+       
+  //          var td3 = document.createElement("td")
+  //          td3.textContent = spec
+       
+  //          var td4 = document.createElement("td")
+  //          td4.textContent = exp
+       
+  //          var td5 = document.createElement("td")
+  //          td5.textContent = email
+       
+  //          var td6 = document.createElement("td")
+  //          td6.textContent = mobile
+       
+  //          var td7 = document.createElement("td")
+  //          if(exp > 5){
+  //            td7.textContent = "Senior"
+  //          }
+  //          else if(exp >= 2 && exp <=5 ){
+  //            td7.textContent = "Junior"
+  //          }
+  //          else{
+  //            td7.textContent = "Trainee"
+  //          }
+       
+  //          var td8 = document.createElement("td")
+  //          td8.textContent = "Delete"
+  //          td8.addEventListener("click", ()=> event.target.parentNode.remove() )
+           
+  //          row.append(td1,td2,td3,td4,td5,td6,td7,td8)
+  //          document.querySelector("tbody").append(row)
+         
+  //         })
+        
+  //      var arr =[]
+  //      arr.push(docSpec)
+
+  //      arr.filter((x){
+  //         if()
+
+
+  //      })
+         
+       
+
+
+
+
+
+
+        //  const users = [
+        //                   {firstName :"akshsay", lastName : "Saini", age : "26"},
+        //                   {firstName :"donald", lastName : "trump", age : "70"},
+        //                   {firstName :"deepika", lastName : "padukone", age : "35"},
+        //                   {firstName :"elon", lastName : "musk", age : "50"}
+        //               ]
+         
+        
+       
+
+  // function delRow(){
+  //   event.target.parentNode.remove()
+  // }
+
+  const form = document.querySelector('form');
+const tableBody = document.querySelector('tbody');
+
+// We will create an empty array to store our employees' data
+let employees = [];
+
+// We will listen for the form submission event and prevent its default behavior
+form.addEventListener('submit', (event) => {
+event.preventDefault();
+
+// We will get the values of the input fields and select field
+const name = document.getElementById('name').value;
+const doctorId = document.getElementById('doctor_id').value;
+const specialization = document.getElementById('specialization').value;
+const experience = document.getElementById('experience').value;
+const email = document.getElementById('email').value;
+const mobile = document.getElementById('mobile').value;
+
+// We will clear the input fields after getting their values
+form.reset();
+
+// We will dynamically assign the role based on the experience
+let role;
+if (experience > 5) {
+role = 'Senior';
+} else if (experience >= 2 && experience <= 5) {
+role = 'Junior';
+} else {
+role = 'Fresher';
+}
+
+// We will create an object with the employee's data
+const employee = {
+name,
+doctorId,
+specialization,
+experience,
+email,
+mobile,
+role,
+};
+
+// We will push the object to the employees array
+employees.push(employee);
+
+// We will call the function to display the employees in the table
+displayEmployees();
+});
+
+// Function to display the employees in the table
+function displayEmployees() {
+// We will first clear the table body
+tableBody.innerHTML = '';
+
+// We will loop through the employees array and create a new row for each employee
+employees.forEach((employee) => {
+const row = document.createElement('tr');
+const nameColumn = document.createElement('td');
+const doctorIdColumn = document.createElement('td');
+const specializationColumn = document.createElement('td');
+const experienceColumn = document.createElement('td');
+const emailColumn = document.createElement('td');
+const mobileColumn = document.createElement('td');
+const roleColumn = document.createElement('td');
+const deleteColumn = document.createElement('td');
+const deleteButton = document.createElement('button');
+
+
+// We will set the text content of each column
+nameColumn.textContent = employee.name;
+doctorIdColumn.textContent = employee.doctorId;
+specializationColumn.textContent = employee.specialization;
+experienceColumn.textContent = employee.experience;
+emailColumn.textContent = employee.email;
+mobileColumn.textContent = employee.mobile;
+roleColumn.textContent = employee.role;
+deleteButton.textContent = 'Delete';
+
+// We will add an event listener to the delete button to remove the row when clicked
+deleteButton.addEventListener('click', () => {
+  const index = employees.indexOf(employee);
+  employees.splice(index, 1);
+  displayEmployees();
+});
+
+// We will append the columns to the row
+row.appendChild(nameColumn);
+row.appendChild(doctorIdColumn);
+row.appendChild(specializationColumn);
+row.appendChild(experienceColumn);
+row.appendChild(emailColumn);
+row.appendChild(mobileColumn);
+row.appendChild(roleColumn);
+deleteColumn.appendChild(deleteButton);
+row.appendChild(deleteColumn);
+
+// We will append the row to the table body
+tableBody.appendChild(row);
+});
+}
+
+// Function to filter the employees by specialization
+function filterEmployees() {
+const filter = document.getElementById('filter').value;
+const filteredEmployees = employees.filter(
+(employee) => employee.specialization === filter
+)};
+// We will call the function to display the filtered employees in
+
+
+
+  </script>
+</html>
+
